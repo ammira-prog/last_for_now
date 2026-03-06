@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judgement Domain</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+height:100vh;
+background:url("TRIAL.jpeg") center/cover no-repeat;
+overflow:hidden;
+}
+
+#overlay{
+background:rgba(0,0,0,0.65);
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+box-sizing:border-box;
+}
+
+h1{
+letter-spacing:3px;
+font-size:32px;
+margin-bottom:10px;
+}
+
+h2{
+font-size:24px;
+margin:10px 0;
+}
+
+p{
+font-size:20px;
+line-height:1.6;
+}
+
+button{
+margin-top:25px;
+padding:14px 28px;
+font-size:20px;
+border:none;
+border-radius:12px;
+background:#ff2e2e;
+color:white;
+cursor:pointer;
+}
+
+#verdict{
+display:none;
+font-size:50px;
+color:#ff2e2e;
+font-weight:bold;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="overlay">
+
+<h1>DOMAIN EXPANSION</h1>
+<h2>DEADLY SENTENCING</h2>
+
+<p>
+Case Under Review
+</p>
+
+<p>
+Defendant: Maiku
+</p>
+
+<p>
+Is he committing<br>
+to watch JJK tonight<br>
+with Mira?
+</p>
+
+<button id="trialBtn">BEGIN TRIAL</button>
+
+<div id="verdict">VERDICT: GUILTY</div>
+
+<div id="sentence" style="display:none">
+
+<p style="margin-top:20px">
+Sentence:<br>
+Watch JJK tonight<br>
+with Mira
+</p>
+
+<button id="endBtn">ACCEPT SENTENCE</button>
+
+</div>
+
+</div>
+
+<audio id="jjkMusic">
+<source src="jjk_op.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let trialBtn = document.getElementById("trialBtn")
+let verdict = document.getElementById("verdict")
+let sentence = document.getElementById("sentence")
+let music = document.getElementById("jjkMusic")
+
+trialBtn.onclick=function(){
+
+document.body.style.background="url('Verdict.jpeg') center/cover no-repeat"
+
+trialBtn.style.display="none"
+
+setTimeout(()=>{
+
+verdict.style.display="block"
+
+music.volume=0.35
+music.play()
+
+},700)
+
+setTimeout(()=>{
+
+sentence.style.display="block"
+
+},1500)
+
+}
+
+document.getElementById("endBtn").onclick=function(){
+
+music.pause()
+music.currentTime=0
+
+document.body.style.transition="0.8s"
+document.body.style.opacity="0"
+
+setTimeout(()=>{
+document.body.innerHTML=""
+},800)
+
+}
+
+document.addEventListener("visibilitychange",function(){
+
+if(document.hidden){
+music.pause()
+}
+
+})
+
+</script>
+
+</body>
+</html>
