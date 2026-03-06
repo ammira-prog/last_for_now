@@ -70,6 +70,14 @@ font-weight:bold;
 margin-top:20px;
 }
 
+#thankyou{
+display:none;
+font-size:50px;
+color:#ffd84d;
+font-weight:bold;
+margin-top:20px;
+}
+
 </style>
 </head>
 
@@ -80,13 +88,9 @@ margin-top:20px;
 <h1>DOMAIN EXPANSION</h1>
 <h2>DEADLY SENTENCING</h2>
 
-<p>
-Case Under Review
-</p>
+<p>Case Under Review</p>
 
-<p>
-Defendant: Maiku
-</p>
+<p>Defendant: Maiku</p>
 
 <p>
 Is he committing<br>
@@ -110,6 +114,8 @@ with Mira
 
 </div>
 
+<div id="thankyou">THANK YOU!</div>
+
 </div>
 
 <audio id="jjkMusic">
@@ -118,10 +124,11 @@ with Mira
 
 <script>
 
-let trialBtn = document.getElementById("trialBtn")
-let verdict = document.getElementById("verdict")
-let sentence = document.getElementById("sentence")
-let music = document.getElementById("jjkMusic")
+let trialBtn=document.getElementById("trialBtn")
+let verdict=document.getElementById("verdict")
+let sentence=document.getElementById("sentence")
+let thankyou=document.getElementById("thankyou")
+let music=document.getElementById("jjkMusic")
 
 trialBtn.onclick=function(){
 
@@ -148,8 +155,15 @@ sentence.style.display="block"
 
 document.getElementById("endBtn").onclick=function(){
 
+sentence.style.display="none"
+verdict.style.display="none"
+
+thankyou.style.display="block"
+
 music.pause()
 music.currentTime=0
+
+setTimeout(()=>{
 
 document.body.style.transition="0.8s"
 document.body.style.opacity="0"
@@ -157,6 +171,8 @@ document.body.style.opacity="0"
 setTimeout(()=>{
 document.body.innerHTML=""
 },800)
+
+},1500)
 
 }
 
